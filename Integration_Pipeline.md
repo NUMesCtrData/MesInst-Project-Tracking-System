@@ -26,42 +26,42 @@ Variable Crosswalk.xlsx
 
 
 2.	Resource Sharing to Data Request Import
-a.	From the RS REDCap pull, filter the data to include projects that have an executive decision date on or after 2/1/2026 and an executive decision of approved or approved with stipulations. 
-b.	Select the necessary variables that will be imported into the data request database and rename any variables with different names but equivalent meaning (refer to the Variable Crosswalk above).
-c.	Collapse all persons associated with the project into a single variable ‘rqst_involved’. 
-d.	Make the rqst_type = ‘ca’ for collaborative application. 
-e.	Join the following variables from the DR REDCap: record_id, rqst_date, rqst_collab_app_id, rqst_short_descript, and data_request_complete. 
-i.	If data exists in the DR REDCap, it will be pulled in. In the creation of new values for the above variables, no data will be overwritten if it already exists. 
-f.	Create the record_id by taking the overall last record_id value from the DR dataframe. Add new values to the last record_id in order of exec_dec_date. 
-i.	Ex: last record_id=1559. There are 3 new resshare projects, with the new record_ids will be 1560, 1561, and 1562 in order of exec_dec_date.
-g.	Start a rqst_short_descript by using the following format:
-i.	Ex: RS0123_[enter PI last name]
-ii.	This will be manually edited by the person working on pulling the data in the Data Request database to add the PI last name and any additional summary information for the pull. 
-h.	Make the data_request_complete status equal to 1 (incomplete) if a status does not already exist.
-i.	Lengthen all new and pre-existing data for the DR REDCap and compare. Export all overwritten values before importing the new data to the DR REDCap. 
+- From the RS REDCap pull, filter the data to include projects that have an executive decision date on or after 2/1/2026 and an executive decision of approved or approved with stipulations. 
+- Select the necessary variables that will be imported into the data request database and rename any variables with different names but equivalent meaning (refer to the Variable Crosswalk above).
+- Collapse all persons associated with the project into a single variable ‘rqst_involved’. 
+- Make the rqst_type = ‘ca’ for collaborative application. 
+- Join the following variables from the DR REDCap: record_id, rqst_date, rqst_collab_app_id, rqst_short_descript, and data_request_complete. 
+- If data exists in the DR REDCap, it will be pulled in. In the creation of new values for the above variables, no data will be overwritten if it already exists. 
+- Create the record_id by taking the overall last record_id value from the DR dataframe. Add new values to the last record_id in order of exec_dec_date. 
+- Ex: last record_id=1559. There are 3 new resshare projects, with the new record_ids will be 1560, 1561, and 1562 in order of exec_dec_date.
+- Start a rqst_short_descript by using the following format:
+- Ex: RS0123_[enter PI last name]
+- This will be manually edited by the person working on pulling the data in the Data Request database to add the PI last name and any additional summary information for the pull. 
+- Make the data_request_complete status equal to 1 (incomplete) if a status does not already exist.
+- Lengthen all new and pre-existing data for the DR REDCap and compare. Export all overwritten values before importing the new data to the DR REDCap. 
 
 3.	Data Request to Resource Sharing Import
-a.	From the DR REDCap pull, filter the data to include projects with a rqst_type of ‘ca’ that have a rqst_ovstatus of ‘Complete’. 
-b.	Select the necessary variables that will be imported into the RS database and rename any variables with different names but equivalent meaning (refer to the Variable Crosswalk above). 
-c.	Create empty columns ‘global_ids’ and ‘vars’. 
-d.	If any Data Requests are comprised of multiple Resource Sharing projects, separate the ids and create a new row for each id. 
-e.	Filter the data to include Data Requests started on or after 2/1/2026. 
-f.	Crosswalk extraction via For-loop:
-i.	For each remaining project from the DR REDCap after completing the above steps, find the filename and filepath for the specific project. Pull the directory of the main Data Request Folder in SharePoint. 
-ii.	If a file exists that has the letters ‘CW’, open that file. This should be the crosswalk that lists all global_ids and their associated Project_ID. 
-iii.	Make a list of all global_ids in the crosswalk and add that list to the global_ids variable in the RS dataframe. 
-g.	Lengthen all new and pre-existing data for the RS REDCap and compare. Export all overwritten values before importing the new data to the RS REDCap. 
+- From the DR REDCap pull, filter the data to include projects with a rqst_type of ‘ca’ that have a rqst_ovstatus of ‘Complete’. 
+- Select the necessary variables that will be imported into the RS database and rename any variables with different names but equivalent meaning (refer to the Variable Crosswalk above). 
+- Create empty columns ‘global_ids’ and ‘vars’. 
+- If any Data Requests are comprised of multiple Resource Sharing projects, separate the ids and create a new row for each id. 
+- Filter the data to include Data Requests started on or after 2/1/2026. 
+- Crosswalk extraction via For-loop:
+- For each remaining project from the DR REDCap after completing the above steps, find the filename and filepath for the specific project. Pull the directory of the main Data Request Folder in SharePoint. 
+- If a file exists that has the letters ‘CW’, open that file. This should be the crosswalk that lists all global_ids and their associated Project_ID. 
+- Make a list of all global_ids in the crosswalk and add that list to the global_ids variable in the RS dataframe. 
+- Lengthen all new and pre-existing data for the RS REDCap and compare. Export all overwritten values before importing the new data to the RS REDCap. 
 
 4.	Resource Sharing Projects to UDS4 Participant Records Import
-a.	From the DR REDCap pull, filter the data to include projects with a rqst_type of ‘ca’ that have a rqst_ovstatus of ‘Complete’. 
-b.	Select the necessary variables that will be imported into the RS database and rename any variables with different names but equivalent meaning (refer to the Variable Crosswalk above). 
-c.	Create empty columns ‘global_ids’ and ‘vars’. 
-d.	If any Data Requests are comprised of multiple Resource Sharing projects, separate the ids and create a new row for each id. 
-e.	For completed projects, join the id and study_status from the RS redcap data. 
-f.	Crosswalk extraction via For-loop:
-i.	For each remaining project from the DR REDCap after completing the above steps, find the filename and filepath for the specific project. Pull the directory of the main Data Request Folder in SharePoint. 
-ii.	If a file exists that has the letters ‘CW’, open that file. This should be the crosswalk that lists all global_ids and their associated Project_ID. 
-iii.	Create the dataframe import_uds4_ppts_long that joins together all crosswalks from all data requests, joining each one onto the others. 
-g.	Collapse the Project_IDs and statuses of projects so that each global_id is one row with all information ready to be imported into a notes box in the UDS4 REDCap. 
-h.	Lengthen all new and pre-existing data for the UDS4 REDCap and compare. Export all overwritten values before importing the new data to the UDS4 REDCap. 
+- From the DR REDCap pull, filter the data to include projects with a rqst_type of ‘ca’ that have a rqst_ovstatus of ‘Complete’. 
+- Select the necessary variables that will be imported into the RS database and rename any variables with different names but equivalent meaning (refer to the Variable Crosswalk above). 
+- Create empty columns ‘global_ids’ and ‘vars’. 
+- If any Data Requests are comprised of multiple Resource Sharing projects, separate the ids and create a new row for each id. 
+- For completed projects, join the id and study_status from the RS redcap data. 
+- Crosswalk extraction via For-loop:
+- For each remaining project from the DR REDCap after completing the above steps, find the filename and filepath for the specific project. Pull the directory of the main Data Request Folder in SharePoint. 
+- If a file exists that has the letters ‘CW’, open that file. This should be the crosswalk that lists all global_ids and their associated Project_ID. 
+- Create the dataframe import_uds4_ppts_long that joins together all crosswalks from all data requests, joining each one onto the others. 
+- Collapse the Project_IDs and statuses of projects so that each global_id is one row with all information ready to be imported into a notes box in the UDS4 REDCap. 
+- Lengthen all new and pre-existing data for the UDS4 REDCap and compare. Export all overwritten values before importing the new data to the UDS4 REDCap. 
 
