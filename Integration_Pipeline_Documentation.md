@@ -1,4 +1,4 @@
-Resource Sharing, Data Request, UDS4 REDCap Database Harmonization (Integration Pipeline)
+**Resource Sharing, Data Request, UDS4 REDCap Database Harmonization (Integration Pipeline)**
 
 This program pulls data from the Resource Sharing (RS), Data Request (DR), and UDS4 REDCap databases. The data is harmonized between the three databases and imported as needed. 
 
