@@ -19,10 +19,10 @@ The file below provides information on the fields required for the harmonization
 Variable Crosswalk.xlsx
 
 1.	Obtain Raw Data (REDCap)
-a.	Use the REDCap API to pull the data from the Resource Sharing, Data Request, and UDS4 databases.  
-i.	RS variables: "id", "exec_dec", "exec_dec_date", "study_contact", "lead", "lead_email", "study_contact_email", "pi", "cnadc_collaborator_name", "affiliates", "study_description", "cnadc_resources", "data_needed", "pi_sig", "pi_sig_date", "decision_letter_complete", "study_status", all variables from the ‘Data Sent' form
-ii.	DR variables: "record_id", "rqst_date", "rqst_name", "rqst_email", "rqst_involved", "rqst_type", "rqst_collab_app_id", "cnadc_resources", "study_description", "rqst_file_name", "rqst_folder_link", "sent_folder_link", "data_link",  "data_dict_link", "vars", "rqst_short_descript", "data_sent_date", "rqst_ovstatus", "data_request_complete"
-iii.	UDS4 variables: "global_id","resshare_project_ids"
+-	Use the REDCap API to pull the data from the Resource Sharing, Data Request, and UDS4 databases.
+-	RS variables: "id", "exec_dec", "exec_dec_date", "study_contact", "lead", "lead_email", "study_contact_email", "pi", "cnadc_collaborator_name", "affiliates", "study_description", "cnadc_resources", "data_needed", "pi_sig", "pi_sig_date", "decision_letter_complete", "study_status", all variables from the ‘Data Sent' form
+-	DR variables: "record_id", "rqst_date", "rqst_name", "rqst_email", "rqst_involved", "rqst_type", "rqst_collab_app_id", "cnadc_resources", "study_description", "rqst_file_name", "rqst_folder_link", "sent_folder_link", "data_link",  "data_dict_link", "vars", "rqst_short_descript", "data_sent_date", "rqst_ovstatus", "data_request_complete"
+-	UDS4 variables: "global_id","resshare_project_ids"
 
 
 2.	Resource Sharing to Data Request Import
