@@ -24,39 +24,39 @@ A structured, multi-layered system for tracking research projects across the Mes
 
 **1. Primary Intake & Oversight Database (Mesulam Institute Resource Sharing & Project Tracking REDCap Database)**
 
-    This is the entry point for all projects involving Institute resources.
+  This is the entry point for all projects involving Institute resources.
     
-    Core functions:
+  Core functions:
       Captures all new project requests
       Serves as the official record for reporting and oversight
       Enables administrative review and approval workflows
     
-    Data collected:
+  Data collected:
       Project title
       Project Lead and Principal Investigator (PI)
       Project description
       Requested resources (data, biospecimens, imaging, participants, etc.)
       Funding source and IRB status (if applicable)
     
-    Governance:
+  Governance:
       Every submission undergoes a completeness check by the ADRC Clinical Core Manager
       Ensures projects meet institutional and sponsor requirements before proceeding
 
 
 **2. Secondary Team-Specific Tracking Database (Data Requests REDCap Database)** 
 
-    Once a project is approved or underway, responsibility shifts to operational teams (e.g., data, biospecimen, imaging teams).
+  Once a project is approved or underway, responsibility shifts to operational teams (e.g., data, biospecimen, imaging teams).
     
-    Purpose:
+  Purpose:
       To track execution-level details that are too granular for the primary database.
     
-    Key capabilities:
+  Key capabilities:
       Logs task progress (data pulls, sample processing, file generation)
       Tracks file storage locations and data delivery outputs
       Documents timelines and internal workflows
       Maintains audit trails for reproducibility and accountability
     
-    Why this layer matters:
+  Why this layer matters:
       Separates high-level project oversight from day-to-day operations
       Allows each team to customize tracking based on their workflows
       Improves efficiency without cluttering the main database
@@ -64,12 +64,12 @@ A structured, multi-layered system for tracking research projects across the Mes
    
 **3. Integration Pipeline (Updates Resource Tracking, Data Requests, and UDS REDCap Databases)**
 
-    A partially automated pipeline (built with R scripts) that has 3 functions:
+  A partially automated pipeline (built with R scripts) that has 3 functions:
       1. Creates a new team-specific project in the Data Requests database.
       2. Upon project completion, logs data file and data dictionary in the Mesulam Institute Resource Sharing & Project Tracking REDCap Database.
       3. Links project activity back to individual participant records.
     
-    Impact:
+  Impact:
       Creates a participant-level audit trail
       Supports downstream reporting, compliance, and longitudinal tracking
       Helps prevent overuse or duplication of participant data
